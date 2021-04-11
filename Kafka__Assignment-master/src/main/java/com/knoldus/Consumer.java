@@ -4,9 +4,6 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -36,8 +33,6 @@ public class Consumer {
                 ConsumerRecords<String, User> messages = kafkaConsumer.poll(100);
                 for (ConsumerRecord<String, User> message : messages) {
                     System.out.println("Message received " + message.value().toString());
-                    FMessage = new String(message.value().toString()) + "\n";
-                    writeDataToFile(FMessage);
                 }
             }
         } catch (Exception e) {
@@ -46,17 +41,15 @@ public class Consumer {
             kafkaConsumer.close();
         }
     }
-
-    private static void writeDataToFile(String FMessage) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter("filename.txt", true));
-        writer.append(FMessage);
-        writer.close();
-    }
 }
 
-class ConsumerListener implements Runnable {
-    @Override
-    public void run() {
-    Consumer.consumer();
-    }
-}
+            class ConsumerListener implements Runnable {
+                @Override
+                public void run() {
+                    Consumer.consumer();
+                }
+
+
+            }
+
+

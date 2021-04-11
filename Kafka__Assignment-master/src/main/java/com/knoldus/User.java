@@ -2,41 +2,44 @@ package com.knoldus;
 
 public class User {
 
-    private int id;
+
     private String name;
-    private int age;
-    private String course;
-  
-    public User() {
+    private  String syllabus;
+
+    User(){
+
+
     }
-  
-    public User(int id ,String name, int age,String course) {
 
-      this.id = id;  
-      this.name = name;
-      this.age = age;
-      this.course = course;
+    public User(String name, String syllabus ){
+        this.name = name;
+        this.syllabus=syllabus;
+
     }
-  
-    public int getID() {
-        return this.id;
-      }
-
-
 
     public String getName() {
-      return this.name;
+        return name;
     }
-  
-    public int getAge() {
-      return this.age;
+
+    public void setName(String name) {
+        this.name = name;
     }
-    public String getCourse()
-    {
-        return this.course;
+
+    public String getSyllabus() {
+        return syllabus;
     }
-  
+
+    public void setSyllabus(String syllabus) {
+        this.syllabus = syllabus;
+    }
+
+    @Override
     public String toString() {
-      return "{id=" +id+ ", name='" + name + "', age=" + age + ", course=" + course + "}";
-  }
+        return "User{" +
+                "name='" + name + '\'' +
+                ", syllabus='" + syllabus + '\'' +
+                '}';
+    }
 }
+
+
